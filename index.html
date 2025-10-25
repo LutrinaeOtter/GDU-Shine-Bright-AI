@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDU Shine Bright AI - AI Startup Mentor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --primary-light: #3385ff;
+            --accent: #00d4ff;
+            --dark: #0a0e27;
+            --light: #f8f9fa;
+            --text: #1a1a1a;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: white;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f0ff 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Section Container */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            height: 300px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .start-btn {
+            margin-top: 1.5rem;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f0ff 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .benefit-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item p {
+            color: var(--text-light);
+        }
+
+        /* How to Use Section */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            color: #aaa;
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.6);
+        }
+
+        .chatbot-window {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+            flex-direction: column;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .chatbot-window.show {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem 1rem 0 0;
+            font-weight: bold;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.bot {
+            background: #f0f0f0;
+            color: var(--text);
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chatbot-input button:hover {
+            background: var(--primary-light);
+        }
+
+        .contact-info {
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🚀 GDU Shine Bright AI</div>
+            <nav>
+                <a href="#about">Giới thiệu</a>
+                <a href="#features">Chức năng</a>
+                <a href="#benefits">Lợi ích</a>
+                <a href="#how-to-use">Cách sử dụng</a>
+                <a href="#contact">Liên hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>GDU Shine Bright AI</h1>
+            <p>AI Startup Mentor - Hướng dẫn khởi nghiệp thông minh cho sinh viên và thanh niên</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Liên hệ ngay</a>
+                <a href="#features" class="btn btn-secondary">Tìm hiểu thêm</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">Giới thiệu dự án</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>GDU Shine Bright AI là gì?</h3>
+                <p>GDU Shine Bright AI là một nền tảng hỗ trợ khởi nghiệp được phát triển bởi Đại học Gia Định, kết hợp công nghệ AI tiên tiến để giúp sinh viên và thanh niên yêu thích khởi nghiệp.</p>
+                <p>Chúng tôi cung cấp các công cụ, hướng dẫn và mentorship từ các chuyên gia trong lĩnh vực khởi nghiệp và công nghệ.</p>
+                <p>Mục tiêu của chúng tôi là giúp bạn biến ý tưởng thành hiện thực và xây dựng một startup thành công.</p>
+                <a href="https://aistudio.google.com/apps/drive/1At5bUKmRPkc-xEtibarafzWmifc5OBzu?showPreview=true&showAssistant=true" target="_blank" class="btn btn-primary start-btn">Bắt đầu sử dụng AI Mentor</a>
+            </div>
+            <div class="about-image">💡</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <h2 class="section-title">Chức năng của AI Startup Mentor</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Tư vấn ý tưởng</h3>
+                <p>Nhận tư vấn chi tiết về ý tưởng kinh doanh của bạn từ AI Mentor thông minh.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Phân tích thị trường</h3>
+                <p>Phân tích thị trường, cạnh tranh và tiềm năng phát triển của dự án.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>Lập kế hoạch kinh doanh</h3>
+                <p>Hỗ trợ lập kế hoạch kinh doanh chi tiết và chiến lược phát triển.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Tư vấn tài chính</h3>
+                <p>Hướng dẫn về quản lý tài chính, gọi vốn và định giá startup.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Kết nối mạng lưới</h3>
+                <p>Kết nối bạn với các nhà đầu tư, mentor và các startup khác.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Tài liệu học tập</h3>
+                <p>Cung cấp các tài liệu, khóa học và tài nguyên học tập miễn phí.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" id="benefits">
+        <h2 class="section-title">Lợi ích dành cho sinh viên</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <h3>🎓 Học tập từ chuyên gia</h3>
+                <p>Nhận kiến thức từ các chuyên gia có kinh nghiệm trong lĩnh vực khởi nghiệp.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>⚡ Tăng tốc độ phát triển</h3>
+                <p>Rút ngắn thời gian phát triển ý tưởng thành sản phẩm thực tế.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>🌟 Tăng cơ hội thành công</h3>
+                <p>Tăng khả năng thành công của startup với hỗ trợ toàn diện.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>🔗 Mở rộng mạng lưới</h3>
+                <p>Kết nối với cộng đồng startup và các nhà đầu tư tiềm năng.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>💡 Phát triển kỹ năng</h3>
+                <p>Phát triển các kỹ năng cần thiết cho một nhà khởi nghiệp thành công.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>🏆 Cơ hội giải thưởng</h3>
+                <p>Tham gia các cuộc thi, hackathon và nhận giải thưởng hấp dẫn.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section class="section" id="how-to-use">
+        <h2 class="section-title">Cách sử dụng AI Mentor</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Đăng ký tài khoản</h3>
+                <p>Tạo tài khoản miễn phí trên nền tảng GDU Shine Bright AI.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Mô tả ý tưởng</h3>
+                <p>Chia sẻ ý tưởng kinh doanh của bạn với AI Mentor.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Nhận tư vấn</h3>
+                <p>Nhận tư vấn chi tiết và hướng dẫn từ AI Mentor.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Phát triển dự án</h3>
+                <p>Phát triển dự án của bạn với sự hỗ trợ liên tục từ nền tảng.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Liên hệ với chúng tôi</h2>
+        <div class="contact-container">
+            <div class="success-message" id="successMessage">
+                ✓ Cảm ơn bạn! Chúng tôi sẽ liên hệ với bạn vào thời gian sớm nhất.
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Họ và tên</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tin nhắn</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Gửi tin nhắn</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GDU Shine Bright AI</h3>
+                <p>Nền tảng hỗ trợ khởi nghiệp thông minh cho sinh viên và thanh niên.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <a href="tel:0367616779">📞 0367616779</a>
+                <a href="mailto:lutrinaeotter27@gmail.com">📧 lutrinaeotter27@gmail.com</a>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết nhanh</h3>
+                <a href="#about">Giới thiệu</a>
+                <a href="#features">Chức năng</a>
+                <a href="#benefits">Lợi ích</a>
+                <a href="#contact">Liên hệ</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GDU Shine Bright AI. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbotToggle">💬</button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                AI Mentor
+                <button style="float: right; background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;" onclick="document.getElementById('chatbotWindow').classList.remove('show')">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot">
+                    Xin chào! Tôi là AI Mentor. Tôi có thể giúp bạn với các câu hỏi về khởi nghiệp. Bạn cần hỗ trợ gì?
+                </div>
+                <div class="contact-info">
+                    <p><strong>Thông tin liên hệ:</strong></p>
+                    <p>📞 <a href="tel:0367616779">0367616779</a></p>
+                    <p>📧 <a href="mailto:lutrinaeotter27@gmail.com">lutrinaeotter27@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Nhập tin nhắn...">
+                <button onclick="sendChatMessage()">Gửi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot toggle
+        document.getElementById('chatbotToggle').addEventListener('click', function() {
+            document.getElementById('chatbotWindow').classList.toggle('show');
+        });
+
+        // Send chat message
+        function sendChatMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesContainer = document.getElementById('chatbotMessages');
+                
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user';
+                userMessage.textContent = message;
+                messagesContainer.appendChild(userMessage);
+                
+                // Add bot response
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message bot';
+                    botMessage.textContent = 'Cảm ơn bạn đã hỏi! Tôi sẽ xem xét câu hỏi của bạn. Vui lòng liên hệ với chúng tôi để được hỗ trợ chi tiết hơn.';
+                    messagesContainer.appendChild(botMessage);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 500);
+                
+                input.value = '';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+
+        // Allow Enter key to send message
+        document.getElementById('chatbotInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
