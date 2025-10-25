@@ -1,0 +1,24 @@
+/* Reset & base */
+:root{
+  --bg: #f7fbff;
+  --card: #ffffff;
+  --accent: #0ea5e9;
+  --text: #0f172a;
+}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+.container{max-width:1000px; margin:0 auto; padding:28px;}
+.hero{background:linear-gradient(135deg,#0077ff 0%, #00b4d8 100%); color:white; padding:40px 0; box-shadow:0 6px 30px rgba(3,7,18,0.08);}
+.brand{display:flex; gap:16px; align-items:center;}
+.logo{width:72px; height:72px; border-radius:12px; background:linear-gradient(135deg,#fff6, #ffffff22); padding:8px; display:block;}
+.hero h1{margin:0; font-size:28px; letter-spacing:0.3px;}
+.tagline{margin:4px 0 0; opacity:0.95;}
+.card{background:var(--card); padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(12,24,40,0.06); margin:18px 0;}
+.intro p{margin:10px 0 0; line-height:1.6;}
+.audience ul{padding-left:18px}
+.features ol{padding-left:18px}
+.chat-actions{margin-top:12px}
+.btn{display:inline-block; padding:10px 16px; border-radius:10px; background:transparent; border:1px solid var(--accent); color:var(--accent); text-decoration:none; font-weight:600;}
+.btn-primary{background:var(--accent); color:white; border:0;}
+.footer{padding:24px 0; text-align:center; color:#334155; opacity:0.9;}
+@media (max-width:640px){ .brand{flex-direction:row} .container{padding:18px} }
