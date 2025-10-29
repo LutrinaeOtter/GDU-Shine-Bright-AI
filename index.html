@@ -462,46 +462,7 @@
             word-wrap: break-word;
         }
 
-        .message.bot {
-            background: #f0f0f0;
-            color: var(--text);
-            align-self: flex-start;
-        }
 
-        .message.user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-        }
-
-        .chatbot-input {
-            padding: 1rem;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            border: 1px solid #ddd;
-            border-radius: 0.5rem;
-            padding: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .chatbot-input button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .chatbot-input button:hover {
-            background: var(--primary-light);
-        }
 
         .contact-info {
             background: #f0f7ff;
@@ -563,6 +524,8 @@
             </nav>
         </div>
     </header>
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <h1>GDU Shine Bright AI</h1>
@@ -573,6 +536,8 @@
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
     <section class="section" id="about">
         <h2 class="section-title">Giới thiệu dự án</h2>
         <div class="about-content">
@@ -581,11 +546,13 @@
                 <p>GDU Shine Bright AI là một nền tảng hỗ trợ khởi nghiệp được phát triển bởi Đại học Gia Định, kết hợp công nghệ AI tiên tiến để giúp sinh viên và thanh niên yêu thích khởi nghiệp.</p>
                 <p>Chúng tôi cung cấp các công cụ, hướng dẫn và mentorship từ các chuyên gia trong lĩnh vực khởi nghiệp và công nghệ.</p>
                 <p>Mục tiêu của chúng tôi là giúp bạn biến ý tưởng thành hiện thực và xây dựng một startup thành công.</p>
-                <a href="https://ai.studio/apps/drive/1At5bUKmRPkc-xEtibarafzWmifc5OBzu" target="_blank" class="btn btn-primary start-btn">Bắt đầu sử dụng AI Mentor</a>
+                <a href="https://v0.app/chat/ai-startup-advisor-ufjis5TKDzt?b=v0-preview-b_r71OAxKlTEu&f=1&path=%2F" target="_blank" class="btn btn-primary start-btn">Bắt đầu sử dụng AI Mentor</a>
             </div>
             <div class="about-image">💡</div>
         </div>
     </section>
+
+    <!-- Features Section -->
     <section class="section" id="features">
         <h2 class="section-title">Chức năng của AI Startup Mentor</h2>
         <div class="features-grid">
@@ -710,7 +677,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>GDU Shine Bright AI</h3>
-                <p>Nền tảng hỗ trợ khởi nghiệp thông minh cho sinh viên .</p>
+                <p>Nền tảng hỗ trợ khởi nghiệp thông minh cho sinh viên và thanh niên.</p>
             </div>
             <div class="footer-section">
                 <h3>Liên hệ</h3>
@@ -729,31 +696,6 @@
             <p>&copy; 2025 GDU Shine Bright AI. Tất cả quyền được bảo lưu.</p>
         </div>
     </footer>
-
-    <!-- Chatbot -->
-    <div class="chatbot-container">
-        <button class="chatbot-button" id="chatbotToggle">💬</button>
-        <div class="chatbot-window" id="chatbotWindow">
-            <div class="chatbot-header">
-                AI Mentor
-                <button style="float: right; background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;" onclick="document.getElementById('chatbotWindow').classList.remove('show')">×</button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages">
-                <div class="message bot">
-                    Xin chào! Tôi là AI Mentor. Tôi có thể giúp bạn với các câu hỏi về khởi nghiệp. Bạn cần hỗ trợ gì?
-                </div>
-                <div class="contact-info">
-                    <p><strong>Thông tin liên hệ:</strong></p>
-                    <p>📞 <a href="tel:0367616779">0367616779</a></p>
-                    <p>📧 <a href="mailto:lutrinaeotter27@gmail.com">lutrinaeotter27@gmail.com</a></p>
-                </div>
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Nhập tin nhắn...">
-                <button onclick="sendChatMessage()">Gửi</button>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Chatbot toggle
